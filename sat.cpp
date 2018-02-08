@@ -6,6 +6,8 @@
 
 void print_mat(std::vector<std::vector<int>>& mat);
 
+void generate_mat(std::vector<std::vector<int>>& mat, int rows, int cols);
+
 int main(int argc, char* argv[]) {
     // suppress warnings
     (void)argc; (void)argv;
@@ -30,10 +32,22 @@ int main(int argc, char* argv[]) {
         std::cerr << "Invalid rows parameter " << argv[2] << '\n';
     }
 
-    mat.resize(cols, std::vector<int>(rows));
 
     // Fill matrix with random bytes
+    generate_mat(mat, rows, cols);
+
+    // Debug print
+    print_mat(mat);
+
+
+
+    return 0;
+}
+
+void generate_mat(std::vector<std::vector<int>>& mat, int rows, int cols) {
     srand(time(NULL));
+
+    mat.resize(cols, std::vector<int>(rows));
     std::vector< std::vector<int> >::iterator r;
     std::vector<int>::iterator c;
     for (r = mat.begin(); r != mat.end(); ++r) {
@@ -41,14 +55,6 @@ int main(int argc, char* argv[]) {
             *c = rand() % 256;
         }
     }
-
-    // Debug print
-    print_mat(mat);
-    //
-
-    
-
-    return 0;
 }
 
 void print_mat(std::vector<std::vector<int>>& mat) {

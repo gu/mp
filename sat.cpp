@@ -9,6 +9,8 @@ void print_mat(std::vector<std::vector<int>>& mat);
 void generate_mat(std::vector<std::vector<int>>& mat);
 void generate_sat_naive(std::vector<std::vector<int>>& mat, std::vector<std::vector<int>>& sat);
 void generate_sat(std::vector<std::vector<int>>& mat, std::vector<std::vector<int>>& sat);
+bool validate_roi(int r1, int r2, int c1, int c2, int rows, int cols);
+int sum_roi(int r1, int r2, int c1, int c2, std::vector<std::vector<int>>& sat);
 
 int main(int argc, char* argv[]) {
     // suppress warnings
@@ -45,8 +47,6 @@ int main(int argc, char* argv[]) {
     std::cout << "Original Matrix: " << std::endl;
     print_mat(mat);
 
-    std::cout << std::endl;
-
     // generate_sat_naive(mat, sat_naive);
     // std::cout << "Original Matrix: " << std::endl;
     // print_mat(sat_naive);
@@ -55,7 +55,38 @@ int main(int argc, char* argv[]) {
     std::cout << "Summed-Area Table: " << std::endl;
     print_mat(sat);
 
+    int r1, r2, c1, c2;
+
+
+    std::cout << "Enter coordinates (r1, c1, r2, c2) for ROI: ";
+    std::cin >> r1 >> c1 >> r2 >> c2;
+    while (validate_roi(r1, r2, c1, c2, rows, cols)) {
+        std::cout << "Sum of ROI is: " << sum_roi(r1, r2, c1, c2, sat) << std::endl;
+        std::cout << "Enter coordinates (r1, c1, r2, c2) for ROI: ";
+        std::cin >> r1 >> c1 >> r2 >> c2;
+    }
+
     return 0;
+}
+
+int sum_roi(int r1, int r2, int c1, int c2, std::vector<std::vector<int>>& sat) {
+    int w, x, y, z;
+    
+    w = r1 == 0 || c1 == 0 ? 0 : sat[r1-1][c1-1];
+    x = r1 == 0 ? 0 : sat[r1-1][c2];
+    y = c1 == 0 ? 0 : sat[r2][c1-1];
+    z = sat[r2][c2];
+
+    return w + z - x - y;
+}
+
+bool validate_roi(int r1, int r2, int c1, int c2, int rows, int cols) {
+    int ret = true;
+    if (r1 < 0 || r1 >= rows) ret = false;
+    if (r2 < 0 || r2 >= rows) ret = false;
+    if (c1 < 0 || c1 >= cols) ret = false;
+    if (c2 < 0 || c2 >= cols) ret = false;
+    return ret;
 }
 
 void generate_sat_naive(std::vector<std::vector<int>>& mat, std::vector<std::vector<int>>& sat) {
@@ -117,5 +148,6 @@ void print_mat(std::vector<std::vector<int>>& mat) {
         std::cout << "]" << std::endl;
     }
     // std::cout << "]" << std::endl;
+    std::cout << std::endl;
 
 }

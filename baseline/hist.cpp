@@ -4,10 +4,12 @@
 #include <vector>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
 using namespace std;
 
 void readBmp(char* filename, vector<vector<unsigned char>> &mat);
+void generateBoundaries(int bins, vector<pair<int, int>> &boundaries);
 
 int main(int argc, char* argv[]) {
     // suppress warnings
@@ -15,6 +17,7 @@ int main(int argc, char* argv[]) {
 
     int bins;
     vector<vector<unsigned char>> mat;
+    vector<pair<int, int>> boundaries;
 
     // Check for valid argument input.
     if (argc != 3) {
@@ -29,14 +32,36 @@ int main(int argc, char* argv[]) {
     }
     ss.clear();
 
+    generateBoundaries(bins, boundaries);
     readBmp(argv[1], mat);
 
     // cout << (int) mat[0][0] << endl;
     // cout << (int) mat[256][256] << endl;
     // cout << (int) mat[511][511] << endl;
 
+    // for (int i = 0; i < bins; i++) {
+    //     cout << boundaries[i].first << " " << boundaries[i].second << endl;
+    // }
+
 
     return 0;
+}
+
+void generateBoundaries(int bins, vector<pair<int, int>> &boundaries) {
+    int width = ceil(256 / bins);
+    int counter = 0;
+
+    boundaries.resize(bins, pair<int, int>(0, 0));
+
+    for (int i = 0; i < bins; i++) {
+        boundaries[i].first = counter;
+        counter += width;
+        boundaries[i].second = counter - 1;
+    }
+
+    if (boundaries[bins-1].second != 255) {
+        boundaries[bins-1].second = 255;
+    }
 }
 
 void readBmp(char* filename, vector<vector<unsigned char>> &mat) {

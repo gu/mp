@@ -8,12 +8,9 @@
 #define VTKM_DEVICE_ADAPTER VTKM_DEVICE_ADAPTER_SERIAL
 #endif
 
-// #include <vtkm/cont/ArrayHandle.h>
 #include <vtkm/cont/ArrayHandlePermutation.h>
 #include <vtkm/cont/DeviceAdapter.h>
 #include <vtkm/cont/DeviceAdapterAlgorithm.h>
-// #include <vtkm/cont/serial/internal/DeviceAdapterTagSerial.h>
-// #include <vtkm/cont/serial/internal/DeviceAdapterAlgorithmSerial.h>
 
 void print_data(std::vector<vtkm::UInt32>& mat,
                     std::vector<vtkm::Id>& key_rowMajor, std::vector<vtkm::Id>& key_colMajor,

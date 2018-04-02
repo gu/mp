@@ -1,0 +1,1 @@
+/Library/Developer/CommandLineTools/usr/bin/c++   -Wl,-search_paths_first -Wl,-headerpad_max_install_names  CMakeFiles/satTBB.dir/satTBB.cpp.o  -o satTBB /usr/local/lib/libvtkm_cont-1.1.1.dylib /usr/local/lib/libtbb.dylib 

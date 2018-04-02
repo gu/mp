@@ -6,5 +6,5 @@ find_package(VTKm REQUIRED
 
 add_executable(sat sat.cpp)
 target_include_directories(sat PRIVATE ${VTKm_INCLUDE_DIRS})
-target_link_libraries(sat ${VTKm_LIBRARIES})
+target_link_libraries(sat PRIVATE ${VTKm_LIBRARIES})
 target_compile_options(sat PRIVATE ${VTKm_COMPILE_OPTIONS})

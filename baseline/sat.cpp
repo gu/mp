@@ -45,7 +45,7 @@ int main(int argc, char* argv[]) {
     // Fill matrix with random bytes
     generate_mat(mat);
     std::cout << "Original Matrix: " << std::endl;
-    print_mat(mat);
+    // print_mat(mat);
 
     // generate_sat_naive(mat, sat_naive);
     // std::cout << "Original Matrix: " << std::endl;
@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
 
     generate_sat(mat, sat);
     std::cout << "Summed-Area Table: " << std::endl;
-    print_mat(sat);
+    // print_mat(sat);
 
     int r1, r2, c1, c2;
 

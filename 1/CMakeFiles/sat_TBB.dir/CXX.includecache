@@ -26,6 +26,10 @@ vtkm/cont/DeviceAdapter.h
 vtkm/cont/DeviceAdapterAlgorithm.h
 -
 
+/Users/wigwam/dev/sp18/mp/1/satTBB.cpp
+sat.cpp
+/Users/wigwam/dev/sp18/mp/1/sat.cpp
+
 /usr/local/include/tbb/aligned_space.h
 tbb_stddef.h
 /usr/local/include/tbb/tbb_stddef.h

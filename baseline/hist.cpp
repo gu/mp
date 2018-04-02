@@ -10,6 +10,8 @@ using namespace std;
 
 void readBmp(char* filename, vector<vector<unsigned char>> &mat);
 void generateBoundaries(int bins, vector<pair<int, int>> &boundaries);
+void generateBinMat(int bin, vector<pair<int,int>> boundaries, 
+                    vector<vector<unsigned char>> &mat, vector<vector<unsigned char>> &bin_mat);
 
 int main(int argc, char* argv[]) {
     // suppress warnings
@@ -17,6 +19,7 @@ int main(int argc, char* argv[]) {
 
     int bins;
     vector<vector<unsigned char>> mat;
+    vector<vector<unsigned char>> bin_mat;
     vector<pair<int, int>> boundaries;
 
     // Check for valid argument input.
@@ -43,8 +46,24 @@ int main(int argc, char* argv[]) {
     //     cout << boundaries[i].first << " " << boundaries[i].second << endl;
     // }
 
+    int bin = 0;
+    generateBinMat(bin, boundaries, mat, bin_mat);
 
     return 0;
+}
+
+void generateBinMat(int bin, vector<pair<int,int>> boundaries, vector<vector<unsigned char>> &mat, vector<vector<unsigned char>> &bin_mat) {
+    int low = boundaries[bin].first;
+    int high = boundaries[bin].second;
+
+    vector<vector<unsigned char>>::iterator r;
+    vector<unsigned char>::iterator c;
+    int h, w;
+    for (r = mat.begin(), h = 0; r != mat.end(); ++r, ++h) {
+        for (c = r->begin(), w = 0; c != r->end(); ++c, ++w) {
+            
+        }
+    }
 }
 
 void generateBoundaries(int bins, vector<pair<int, int>> &boundaries) {

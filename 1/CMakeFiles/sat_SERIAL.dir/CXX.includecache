@@ -23,8 +23,6 @@ vtkm/cont/ArrayHandlePermutation.h
 -
 vtkm/cont/DeviceAdapter.h
 -
-vtkm/cont/DeviceAdapterAlgorithm.h
--
 
 /usr/local/include/tbb/aligned_space.h
 tbb_stddef.h

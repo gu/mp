@@ -90,7 +90,8 @@ sat_EXTERNAL_OBJECTS =
 
 sat: CMakeFiles/sat.dir/sat.cpp.o
 sat: CMakeFiles/sat.dir/build.make
-sat: /usr/local/lib/libvtkm_cont-1.0.1.dylib
+sat: /usr/local/lib/libvtkm_cont-1.1.1.dylib
+sat: /usr/local/lib/libtbb.dylib
 sat: CMakeFiles/sat.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/wigwam/dev/sp18/mp/1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable sat"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/sat.dir/link.txt --verbose=$(VERBOSE)

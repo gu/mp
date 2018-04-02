@@ -185,10 +185,35 @@ Project_BINARY_DIR:STATIC=/Users/wigwam/dev/sp18/mp/1
 //Value Computed by CMake
 Project_SOURCE_DIR:STATIC=/Users/wigwam/dev/sp18/mp/1
 
-VTKm_CONFIGURE_COMPONENT_MESSAGES:STRING= Failed to configure VTK-m component TBB: !VTKm_ENABLE_TBB
+//Path to a file.
+TBB_INCLUDE_DIR:PATH=/usr/local/include
+
+//Path to a library.
+TBB_LIBRARY_DEBUG:FILEPATH=/usr/local/lib/libtbb.dylib
+
+//Path to a library.
+TBB_LIBRARY_RELEASE:FILEPATH=/usr/local/lib/libtbb.dylib
+
+//Path to a file.
+TBB_MALLOC_INCLUDE_DIR:PATH=/usr/local/include
+
+//Path to a library.
+TBB_MALLOC_LIBRARY_DEBUG:FILEPATH=/usr/local/lib/libtbbmalloc.dylib
+
+//Path to a library.
+TBB_MALLOC_LIBRARY_RELEASE:FILEPATH=/usr/local/lib/libtbbmalloc.dylib
+
+//Path to a file.
+TBB_MALLOC_PROXY_INCLUDE_DIR:PATH=/usr/local/include
+
+//Path to a library.
+TBB_MALLOC_PROXY_LIBRARY_DEBUG:FILEPATH=/usr/local/lib/libtbbmalloc_proxy.dylib
+
+//Path to a library.
+TBB_MALLOC_PROXY_LIBRARY_RELEASE:FILEPATH=/usr/local/lib/libtbbmalloc_proxy.dylib
 
 //The directory containing a CMake configuration file for VTKm.
-VTKm_DIR:PATH=/usr/local/lib/cmake/vtkm-1.0
+VTKm_DIR:PATH=/usr/local/lib/cmake/vtkm-1.1
 
 //Level of compiler vectorization support
 VTKm_Vectorization:STRING=none
@@ -327,6 +352,25 @@ CMAKE_STRIP-ADVANCED:INTERNAL=1
 CMAKE_UNAME:INTERNAL=/usr/bin/uname
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TBB_INCLUDE_DIR
+TBB_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TBB_LIBRARY_DEBUG
+TBB_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TBB_LIBRARY_RELEASE
+TBB_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TBB_MALLOC_INCLUDE_DIR
+TBB_MALLOC_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TBB_MALLOC_LIBRARY_DEBUG
+TBB_MALLOC_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TBB_MALLOC_LIBRARY_RELEASE
+TBB_MALLOC_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TBB_MALLOC_PROXY_INCLUDE_DIR
+TBB_MALLOC_PROXY_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TBB_MALLOC_PROXY_LIBRARY_DEBUG
+TBB_MALLOC_PROXY_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: TBB_MALLOC_PROXY_LIBRARY_RELEASE
+TBB_MALLOC_PROXY_LIBRARY_RELEASE-ADVANCED:INTERNAL=1
+VTKm_CONFIGURE_COMPONENT_MESSAGES:INTERNAL=
 //STRINGS property for variable: VTKm_Vectorization
 VTKm_Vectorization-STRINGS:INTERNAL=none;native;avx;avx2;avx512
 

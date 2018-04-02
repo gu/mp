@@ -6,5 +6,5 @@ CXX_FLAGS =   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -isystem /usr/local/include/vtkm-1.1 -I/usr/local/include 
+CXX_INCLUDES = -I/Users/wigwam/dev/sp18/mp/1 -isystem /usr/local/include/vtkm-1.1 -I/usr/local/include 
 

@@ -4,10 +4,12 @@
 #include <time.h>
 #include <math.h>
 
-#include <vtkm/cont/ArrayHandle.h>
+// #include <vtkm/cont/ArrayHandle.h>
 #include <vtkm/cont/ArrayHandlePermutation.h>
 #include <vtkm/cont/DeviceAdapter.h>
 #include <vtkm/cont/DeviceAdapterAlgorithm.h>
+// #include <vtkm/cont/serial/internal/DeviceAdapterTagSerial.h>
+// #include <vtkm/cont/serial/internal/DeviceAdapterAlgorithmSerial.h>
 
 void print_data(std::vector<vtkm::UInt32>& mat,
                     std::vector<vtkm::Id>& key_rowMajor, std::vector<vtkm::Id>& key_colMajor,
@@ -83,20 +85,23 @@ void generate_sat(std::vector<vtkm::UInt32>& mat, std::vector<vtkm::UInt32>& sat
                     std::vector<vtkm::Id>& key_rowMajor, std::vector<vtkm::Id>& key_colMajor,
                     std::vector<vtkm::Id>& key_permuteRtC) {
 
+
+    using DeviceAdapter = VTKM_DEFAULT_DEVICE_ADAPTER_TAG;
+
     vtkm::cont::ArrayHandle<vtkm::UInt32> matHandle = vtkm::cont::make_ArrayHandle(mat);
     vtkm::cont::ArrayHandle<vtkm::Id> key_rowMajorHandle = vtkm::cont::make_ArrayHandle(key_rowMajor);
     vtkm::cont::ArrayHandle<vtkm::Id> key_colMajorHandle = vtkm::cont::make_ArrayHandle(key_colMajor);
     vtkm::cont::ArrayHandle<vtkm::Id> key_permuteRtCHandle = vtkm::cont::make_ArrayHandle(key_permuteRtC);
 
     vtkm::cont::ArrayHandle<vtkm::UInt32> sat_firstRunHandle;
-    vtkm::cont::DeviceAdapterAlgorithm<VTKM_DEVICE_ADAPTER>::ScanInclusiveByKey(key_rowMajorHandle, matHandle, sat_firstRunHandle);
+    vtkm::cont::DeviceAdapterAlgorithm<DeviceAdapter>::ScanInclusiveByKey(key_rowMajorHandle, matHandle, sat_firstRunHandle);
 
     vtkm::cont::ArrayHandlePermutation<vtkm::cont::ArrayHandle<vtkm::Id>, 
                                        vtkm::cont::ArrayHandle<vtkm::UInt32>> sat_permutedRtC(
                                             key_permuteRtCHandle, sat_firstRunHandle);
 
     vtkm::cont::ArrayHandle<vtkm::UInt32> sat_secondRunHandle;
-    vtkm::cont::DeviceAdapterAlgorithm<VTKM_DEVICE_ADAPTER>::ScanInclusiveByKey(key_colMajorHandle, sat_permutedRtC, sat_secondRunHandle);
+    vtkm::cont::DeviceAdapterAlgorithm<DeviceAdapter>::ScanInclusiveByKey(key_colMajorHandle, sat_permutedRtC, sat_secondRunHandle);
 
     vtkm::cont::ArrayHandlePermutation<vtkm::cont::ArrayHandle<vtkm::Id>, 
                                        vtkm::cont::ArrayHandle<vtkm::UInt32>> satHandle(

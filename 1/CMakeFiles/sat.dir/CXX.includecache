@@ -17,8 +17,6 @@ time.h
 -
 math.h
 -
-vtkm/cont/ArrayHandle.h
--
 vtkm/cont/ArrayHandlePermutation.h
 -
 vtkm/cont/DeviceAdapter.h
